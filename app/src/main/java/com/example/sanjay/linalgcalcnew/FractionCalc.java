@@ -80,30 +80,39 @@ public class FractionCalc {
             return 1;
         }
 
+        //depthCount++;
         return euc(B, temp.getRemainder(), depthCount);
     }
 
     private static int getGcf(int A, int B) {
         int result = 1;
+        boolean isNegative = false;
 
-        if (!(A==1||B==1))
-        {
-        if (A > B) {
-            result = euc(A, B, 0);
-        } else {
-            result = euc(B, A, 0);
+        if (A < 0 || B < 0) {
+            isNegative = true;
         }
-    }
 
-        return result;
+        if (!(Math.abs(A) == 1 || Math.abs(B) == 1)) {
+            if (A > B) {
+                result = euc(Math.abs(A), Math.abs(B), 0);
+            } else {
+                result = euc(Math.abs(B), Math.abs(A), 0);
+            }
+        }
+
+        if (isNegative) {
+            return -1 * result;
+        } else {
+            return result;
+        }
     }
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int num1 = Integer.parseInt(input.nextLine());
         int den1 = Integer.parseInt(input.nextLine());
-        int num2 = Integer.parseInt(input.nextLine());
-        int den2 = Integer.parseInt(input.nextLine());
-        System.out.println(add(new Fraction(num1, den1), new Fraction(num2, den2)).toString());
+        //int num2 = Integer.parseInt(input.nextLine());
+        //int den2 = Integer.parseInt(input.nextLine());
+        System.out.println(simplifyFraction(new Fraction(num1, den1)).toString());
     }
 }

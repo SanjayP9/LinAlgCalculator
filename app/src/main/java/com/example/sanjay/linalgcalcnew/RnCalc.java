@@ -43,7 +43,7 @@ public class RnCalc {
             temp = input.nextLine();
 
             if (temp.contains("/")) {
-                v[i]  = new Fraction(Character.getNumericValue(temp.charAt(0)), Character.getNumericValue(temp.charAt(2)));
+                v[i] = new Fraction(Character.getNumericValue(temp.charAt(0)), Character.getNumericValue(temp.charAt(2)));
             } else {
                 v[i] = new Fraction(Integer.parseInt(temp), 1);
             }
