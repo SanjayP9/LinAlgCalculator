@@ -45,7 +45,7 @@ public class FractionCalc {
         return multiply(frac1, reciprocal(frac2));
     }
 
-    private static Fraction reciprocal(Fraction frac) {
+    public static Fraction reciprocal(Fraction frac) {
         return new Fraction(frac.getDenominator(), frac.getNumerator());
     }
 
