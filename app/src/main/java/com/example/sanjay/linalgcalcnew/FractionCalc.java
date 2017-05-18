@@ -41,7 +41,7 @@ public class FractionCalc {
         return simplifyFraction(new Fraction(frac.getNumerator() * scalar, frac.getDenominator()));
     }
 
-    public static Fraction Divide(Fraction frac1, Fraction frac2) {
+    public static Fraction divide(Fraction frac1, Fraction frac2) {
         return multiply(frac1, reciprocal(frac2));
     }
 
@@ -70,7 +70,7 @@ public class FractionCalc {
         return new Tuple(count, A - (count * B));
     }
 
-    // A = q * B+ r
+    // A = q * B + r
     private static int euc(int A, int B, int depthCount) {
         Tuple temp = findRemainder(A, B);
 

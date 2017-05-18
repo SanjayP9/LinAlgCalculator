@@ -8,6 +8,11 @@ public class Fraction {
     private int numerator;
     private int denominator;
 
+    public Fraction() {
+        this.numerator = 0;
+        this.denominator = 1;
+    }
+
     public Fraction(int num, int den) {
         this.numerator = num;
         this.denominator = den;
@@ -30,14 +35,17 @@ public class Fraction {
     }
 
     @Override
-    public String toString()
-    {
-        if (this.denominator!=1)
+    public String toString() {
+
+        if (this.denominator == -1)
         {
-            return this.numerator + "/" + this.denominator;
+            this.numerator *=-1;
+            this.denominator = 1;
         }
-        else
-        {
+
+        if (this.denominator != 1) {
+            return this.numerator + "/" + this.denominator;
+        } else {
             return Integer.toString(this.numerator);
         }
 
