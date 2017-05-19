@@ -15,8 +15,8 @@ public class FractionCalc {
 
     public static Fraction add(Fraction frac1, Fraction frac2) {
 
-        frac1 = simplifyFraction(frac1);
-        frac2 = simplifyFraction(frac2);
+        //frac1 = simplifyFraction(frac1);
+        //frac2 = simplifyFraction(frac2);
 
         return simplifyFraction(new Fraction(frac1.getNumerator() * frac2.getDenominator() +
                 frac2.getNumerator() * frac1.getDenominator(),
@@ -29,8 +29,8 @@ public class FractionCalc {
     }
 
     public static Fraction multiply(Fraction frac1, Fraction frac2) {
-        frac1 = simplifyFraction(frac1);
-        frac2 = simplifyFraction(frac2);
+        //frac1 = simplifyFraction(frac1);
+        //frac2 = simplifyFraction(frac2);
 
         return simplifyFraction(new Fraction(frac1.getNumerator() * frac2.getNumerator(),
                 frac1.getDenominator() * frac2.getDenominator()));
@@ -50,6 +50,12 @@ public class FractionCalc {
     }
 
     public static Fraction simplifyFraction(Fraction frac) {
+        if (frac.getNumerator() == 0) {
+            return new Fraction();
+        } else if (frac.getDenominator() == 1) {
+            return frac;
+        }
+
         int gcf = getGcf(frac.getNumerator(), frac.getDenominator());
 
         return new Fraction(frac.getNumerator() / gcf, frac.getDenominator() / gcf);
@@ -85,6 +91,11 @@ public class FractionCalc {
     }
 
     private static int getGcf(int A, int B) {
+
+        if (A == 0 || B == 0) {
+            return 1;
+        }
+
         int result = 1;
         boolean isNegative = false;
 

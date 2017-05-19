@@ -69,32 +69,24 @@ public class MatricieCalc {
     public static Fraction determinant(Fraction[][] m) {
         if (m.length == 2) {
             return frac.subtract(frac.multiply(m[0][0], m[1][1]), frac.multiply(m[0][1], m[1][0]));
-        }
-        else
-        {
+        } else {
             Fraction ratio;
-            for (int i = 0; i < m.length; i++)
-            {
-                for (int j = 0; j < m.length; j++)
-                {
-                    if (j>i)
-                    {
+            for (int i = 0; i < m.length; i++) {
+                for (int j = 0; j < m.length; j++) {
+                    if (j > i) {
                         ratio = frac.divide(m[j][i], m[i][i]);
 
-                        for (int n = 0; n<m.length;n++)
-                        {
-                            m[j][n] = frac.subtract(m[j][n],frac.multiply(ratio, m[i][n]));
+                        for (int n = 0; n < m.length; n++) {
+                            m[j][n] = frac.subtract(m[j][n], frac.multiply(ratio, m[i][n]));
                         }
                     }
                 }
             }
 
-            Fraction det = new Fraction(1,1);
+            Fraction det = new Fraction(1, 1);
 
-            for (int i =0; i< m.length;i++)
-            {
-                if (m[i][i].getNumerator() == 0)
-                {
+            for (int i = 0; i < m.length; i++) {
+                if (m[i][i].getNumerator() == 0) {
                     return new Fraction();
                 }
                 det = frac.multiply(det, m[i][i]);
@@ -109,7 +101,7 @@ public class MatricieCalc {
         Fraction[][] m1 = new Fraction[][]{
                 {new Fraction(1, 1), new Fraction(2, 1), new Fraction(3, 1)},
                 {new Fraction(4, 1), new Fraction(5, 1), new Fraction(6, 1)},
-                {new Fraction(4, 1), new Fraction(5, 2), new Fraction(6, 1)}
+                {new Fraction(4, 1), new Fraction(5, 1), new Fraction(6, 1)}
         };
 
         Fraction[][] m2 = new Fraction[][]{
