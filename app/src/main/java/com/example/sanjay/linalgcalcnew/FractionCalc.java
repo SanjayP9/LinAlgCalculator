@@ -1,5 +1,6 @@
 package com.example.sanjay.linalgcalcnew;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -50,6 +51,10 @@ public class FractionCalc {
     }
 
     public static Fraction simplifyFraction(Fraction frac) {
+        if (frac.getNumerator() == frac.getDenominator()) {
+            return new Fraction(1, 1);
+        }
+
         if (frac.getNumerator() == 0) {
             return new Fraction();
         } else if (frac.getDenominator() == 1) {
@@ -86,7 +91,7 @@ public class FractionCalc {
             return 1;
         }
 
-        //depthCount++;
+        depthCount++;
         return euc(B, temp.getRemainder(), depthCount);
     }
 
@@ -119,11 +124,21 @@ public class FractionCalc {
     }
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int num1 = Integer.parseInt(input.nextLine());
-        int den1 = Integer.parseInt(input.nextLine());
-        //int num2 = Integer.parseInt(input.nextLine());
-        //int den2 = Integer.parseInt(input.nextLine());
-        System.out.println(simplifyFraction(new Fraction(num1, den1)).toString());
+        Random rand = new Random();
+        Fraction frac;
+        FractionCalc calc = new FractionCalc();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            frac = new Fraction(rand.nextInt(10000), rand.nextInt(10000));
+
+            if (rand.nextInt(2) == 1) {
+                frac.setNumerator(frac.getNumerator() * -1);
+            }
+
+            System.out.println(frac.toString() + "\t\t" + calc.simplifyFraction(frac).toString());
+
+            scanner.nextLine();
+        }
     }
 }

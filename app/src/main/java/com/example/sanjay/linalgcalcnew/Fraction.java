@@ -37,10 +37,9 @@ public class Fraction {
     @Override
     public String toString() {
 
-        if (this.denominator == -1)
-        {
-            this.numerator *=-1;
-            this.denominator = 1;
+        if (this.denominator < 0) {
+            this.numerator *= -1;
+            this.denominator *= -1;
         }
 
         if (this.denominator != 1) {

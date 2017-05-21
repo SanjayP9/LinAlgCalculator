@@ -1,5 +1,9 @@
 package com.example.sanjay.linalgcalcnew;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * Created by Sanjay on 5/12/2017.
  */
@@ -96,9 +100,61 @@ public class MatricieCalc {
         }
     }
 
+    public Fraction[][] adjugate(Fraction[][] m)
+    {
+        Fraction[][] result = new Fraction[m.length][m[0].length];
+
+        for (int i =0; i < m.length;i++ )
+        {
+            for (int j= 0; j< m[0].length;j++)
+            {
+
+            }
+        }
+
+        return transpose(result);
+    }
+
+    private static Fraction[][] trimArray(Fraction[][] m, int x1, int x2, int y1, int y2, int currX, int currY) {
+        List<List<Fraction>> trimmedList = new ArrayList<>();
+
+        for (int i = x1; i <= x2; i++) {
+            ArrayList<Fraction> temp = new ArrayList<>();
+
+            for (int j = y1; j <= y2; j++) {
+                if (j != currX && i != currY) {
+                   temp.add(m[i][j]);
+                }
+            }
+            if(!(temp.isEmpty())) {
+                trimmedList.add(temp);
+            }
+        }
+
+        Fraction[][] trimmedArray = new Fraction[trimmedList.size()][trimmedList.get(0).size()];
+
+        for (int i =0 ;i < trimmedList.size();i++)
+        {
+            trimmedArray[i] = trimmedList.get(i).toArray(trimmedArray[i]);
+        }
+
+        return trimmedArray;
+    }
+
 
     public static void main(String[] args) {
-        Fraction[][] m1 = new Fraction[][]{
+        Random rand = new Random();
+
+        Fraction[][] matrix = new Fraction[5][5];
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                matrix[i][j] = new Fraction(rand.nextInt(11), 1);
+            }
+        }
+
+
+       /* Fraction[][] m1 = new Fraction[][]{
                 {new Fraction(1, 1), new Fraction(2, 1), new Fraction(3, 1)},
                 {new Fraction(4, 1), new Fraction(5, 1), new Fraction(6, 1)},
                 {new Fraction(4, 1), new Fraction(5, 1), new Fraction(6, 1)}
@@ -107,19 +163,25 @@ public class MatricieCalc {
         Fraction[][] m2 = new Fraction[][]{
                 {new Fraction(1, 1), new Fraction(2, 1)},
                 {new Fraction(3, 1), new Fraction(1, 1)}
-        };
+        };*/
 
-        System.out.println("Started");
-        //Fraction[][] result = multiply(m1, m2);
-        Fraction result = determinant(m1);
+        Fraction[][] result = trimArray(matrix, 1, 4, 1, 4, 3, 2);
 
-        /*for (int i = 0; i < result.length; i++) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j].toString() + "\t");
+            }
+            System.out.println();
+        }
+
+
+        for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[0].length; j++) {
                 System.out.print(result[i][j].toString() + "\t");
             }
             System.out.println();
-        }*/
-        System.out.println(result.toString());
-        System.out.println("Done");
+        }
+
+
     }
 }
