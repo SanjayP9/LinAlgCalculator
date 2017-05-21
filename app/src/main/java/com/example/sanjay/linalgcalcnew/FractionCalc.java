@@ -16,9 +16,6 @@ public class FractionCalc {
 
     public static Fraction add(Fraction frac1, Fraction frac2) {
 
-        //frac1 = simplifyFraction(frac1);
-        //frac2 = simplifyFraction(frac2);
-
         return simplifyFraction(new Fraction(frac1.getNumerator() * frac2.getDenominator() +
                 frac2.getNumerator() * frac1.getDenominator(),
                 frac1.getDenominator() * frac2.getDenominator()));
@@ -30,8 +27,6 @@ public class FractionCalc {
     }
 
     public static Fraction multiply(Fraction frac1, Fraction frac2) {
-        //frac1 = simplifyFraction(frac1);
-        //frac2 = simplifyFraction(frac2);
 
         return simplifyFraction(new Fraction(frac1.getNumerator() * frac2.getNumerator(),
                 frac1.getDenominator() * frac2.getDenominator()));
@@ -124,7 +119,7 @@ public class FractionCalc {
     }
 
     public static void main(String[] args) {
-        Random rand = new Random();
+        /*Random rand = new Random();
         Fraction frac;
         FractionCalc calc = new FractionCalc();
         Scanner scanner = new Scanner(System.in);
@@ -139,6 +134,6 @@ public class FractionCalc {
             System.out.println(frac.toString() + "\t\t" + calc.simplifyFraction(frac).toString());
 
             scanner.nextLine();
-        }
+        }*/
     }
 }

@@ -13,6 +13,12 @@ public class Fraction {
         this.denominator = 1;
     }
 
+    public  Fraction(int num)
+    {
+        this.numerator = num;
+        this.denominator = 1;
+    }
+
     public Fraction(int num, int den) {
         this.numerator = num;
         this.denominator = den;
