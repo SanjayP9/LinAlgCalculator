@@ -79,27 +79,30 @@ public class MatricieCalc {
 
             for (int i = 0; i < m.length; i++) {
                 for (int j = 0; j < m.length; j++) {
-                    if (i>j){upperM[i][j] = new Fraction(); }
-                    if (i<j){lowerM[i][j] = new Fraction();}
-                    if (i==j){lowerM[i][j] = new Fraction(1);}
+                    if (i > j) {
+                        upperM[i][j] = new Fraction();
+                    }
+                    if (i < j) {
+                        lowerM[i][j] = new Fraction();
+                    }
+                    if (i == j) {
+                        lowerM[i][j] = new Fraction(1);
+                    }
                 }
             }
 
-            for (int ctr1 = 0; ctr1<m.length; ctr1++)
-            {
-
+            for (int ctr1 = 0; ctr1 < m.length; ctr1++) {
 
 
                 upperM[ctr1][ctr1] = m[ctr1][ctr1];
-                for (int ctr2=ctr1+1;ctr2<m.length;ctr2++)
-                {
-                    upperM[ctr1][ctr2]=m[ctr1][ctr2];
-                    lowerM[ctr2][ctr1]=frac.divide(m[ctr2][ctr1],upperM[ctr1][ctr1]);
+                for (int ctr2 = ctr1 + 1; ctr2 < m.length; ctr2++) {
+                    upperM[ctr1][ctr2] = m[ctr1][ctr2];
+                    lowerM[ctr2][ctr1] = frac.divide(m[ctr2][ctr1], upperM[ctr1][ctr1]);
                 }
 
-                for(int row=ctr1+1;row<m.length;row++)
-                    for(int column=ctr1+1;column<m.length;column++)
-                        m[row][column]=frac.subtract(m[row][column],frac.multiply(lowerM[row][ctr1],upperM[ctr1][column]));
+                for (int row = ctr1 + 1; row < m.length; row++)
+                    for (int column = ctr1 + 1; column < m.length; column++)
+                        m[row][column] = frac.subtract(m[row][column], frac.multiply(lowerM[row][ctr1], upperM[ctr1][column]));
             }
 
 
@@ -141,6 +144,22 @@ public class MatricieCalc {
                     return new Fraction();
                 }
                 det = frac.multiply(det, m[i][i]);
+            }
+
+            return det;
+        }
+    }
+
+    public static Fraction detOther(Fraction[][] m) {
+        if (m.length == 2) {
+            return frac.subtract(frac.multiply(m[0][0], m[1][1]), frac.multiply(m[0][1], m[1][0]));
+        } else {
+
+            Fraction det = new Fraction(1);
+
+            for (int i = 0; i < m.length; i++)
+            {
+                det = frac.add(det,frac.scalarMultiply(detOther(trimMatrix(m, i,0)), (int)Math.pow((-1),i+1)));
             }
 
             return det;
@@ -220,18 +239,18 @@ public class MatricieCalc {
         };
 
         displayMatrix(m1);
-       /* System.out.println("\nAdjugate");
+        //System.out.println("\nAdjugate");
 
-        displayMatrix(adjugate(m1));
-        System.out.println("\nTrimmed @(2,0)");
+        //displayMatrix(adjugate(m1));
+        //System.out.println("\nTrimmed @(2,0)");
 
-        displayMatrix(trimMatrix(m1, 2, 0));
-        System.out.println("\nInverse");
+        displayMatrix(trimMatrix(m1, 3, 0));
+        //System.out.println("\nInverse");
 
-        displayMatrix(inverse(m1));*/
-        System.out.println("\nDeterminant");
+        //displayMatrix(inverse(m1));
+        //System.out.println("\nDeterminant");
 
-        Fraction result = detTest(trimMatrix(m1, 3, 0));
+        Fraction result = detOther(trimMatrix(m1, 3, 0));
         System.out.println(result.toString());
 
     }
