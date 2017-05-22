@@ -8,10 +8,10 @@ import java.util.Random;
  * Created by Sanjay on 5/12/2017.
  */
 
-public class MatricieCalc {
+public class MatriceCalc {
     private static FractionCalc frac;
 
-    public MatricieCalc() {
+    public MatriceCalc() {
         frac = new FractionCalc();
     }
 
@@ -77,9 +77,8 @@ public class MatricieCalc {
 
             Fraction det = new Fraction();
 
-            for (int i = 0; i < m.length; i++)
-            {
-                det = frac.add(det,frac.multiply(determinant(trimMatrix(m, i,0)), frac.scalarMultiply(m[0][i],((int)Math.pow((-1),i+2)))));
+            for (int i = 0; i < m.length; i++) {
+                det = frac.add(det, frac.multiply(determinant(trimMatrix(m, i, 0)), frac.scalarMultiply(m[0][i], ((int) Math.pow((-1), i + 2)))));
             }
 
             return det;

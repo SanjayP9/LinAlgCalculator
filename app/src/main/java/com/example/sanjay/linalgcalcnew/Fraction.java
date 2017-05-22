@@ -7,14 +7,15 @@ package com.example.sanjay.linalgcalcnew;
 public class Fraction {
     private int numerator;
     private int denominator;
+    private boolean numRoot;
+    private boolean denRoot;
 
     public Fraction() {
         this.numerator = 0;
         this.denominator = 1;
     }
 
-    public  Fraction(int num)
-    {
+    public Fraction(int num) {
         this.numerator = num;
         this.denominator = 1;
     }
@@ -22,6 +23,13 @@ public class Fraction {
     public Fraction(int num, int den) {
         this.numerator = num;
         this.denominator = den;
+    }
+
+    public Fraction(int num, int den, boolean numRoot, boolean denRoot) {
+        this.numerator = num;
+        this.denominator = den;
+        this.numRoot = numRoot;
+        this.denRoot = denRoot;
     }
 
     public void setNumerator(int numerator) {
@@ -40,19 +48,47 @@ public class Fraction {
         return denominator;
     }
 
+    public boolean isNumRoot() {
+        return numRoot;
+    }
+
+    public void setNumRoot(boolean numRoot) {
+        this.numRoot = numRoot;
+    }
+
+    public boolean isDenRoot() {
+        return denRoot;
+    }
+
+    public void setDenRoot(boolean denRoot) {
+        this.denRoot = denRoot;
+    }
+
     @Override
     public String toString() {
+
+        String result = "";
 
         if (this.denominator < 0) {
             this.numerator *= -1;
             this.denominator *= -1;
         }
 
-        if (this.denominator != 1) {
-            return this.numerator + "/" + this.denominator;
+        if (this.numRoot) {
+            result += "√" + this.numerator;
         } else {
-            return Integer.toString(this.numerator);
+            result += Integer.toString(this.numerator);
         }
 
+        if (denominator != 1) {
+            result += "/";
+
+            if (this.denRoot) {
+                result += "√" + this.denominator;
+            } else {
+                result += Integer.toString(this.denominator);
+            }
+        }
+        return result;
     }
 }

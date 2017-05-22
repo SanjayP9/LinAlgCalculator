@@ -9,6 +9,12 @@ public class Vector3D {
     private Fraction y;
     private Fraction z;
 
+    public Vector3D() {
+        this.x = new Fraction();
+        this.y = new Fraction();
+        this.z = new Fraction();
+    }
+
     public Vector3D(Fraction x, Fraction y, Fraction z) {
         this.x = x;
         this.y = y;

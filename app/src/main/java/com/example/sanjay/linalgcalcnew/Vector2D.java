@@ -13,6 +13,7 @@ public class Vector2D {
         this.y = y;
     }
 
+
     public Fraction getX() {
         return x;
     }
