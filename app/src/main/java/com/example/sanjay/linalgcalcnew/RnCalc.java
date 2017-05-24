@@ -127,6 +127,47 @@ public class RnCalc {
         return magnitude(projection(p0p, plane.getNormal()));
     }
 
+    public static LinePOIResult lineIntersection(Vector3D t0, Vector3D t, Vector3D s0, Vector3D s) {
+
+        if (magnitude(crossProduct(s, t)).getNumerator() == 0)
+        {
+            // if t0 and s0 are equivalent then they are Identical if not they are parallel
+        }
+        return null;//temp
+    }
+
+    public static PlanePOIResult planeIntersection(Plane p1, Plane p2) {
+        if (magnitude(crossProduct(p1.getNormal(), p2.getNormal())).getNumerator() == 0) {
+            return new PlanePOIResult();
+        }
+
+        Vector3D lineVect = crossProduct(p1.getNormal(), p2.getNormal());
+
+        Fraction x = new Fraction();
+        Fraction y = new Fraction();
+        Fraction z = new Fraction();
+
+        if ((p1.getX().getNumerator() != 0)||(p2.getX().getNumerator() != 0))
+        {
+            x = frac.divide(frac.subtract(p2.getConstant(),p1.getConstant()),frac.subtract(p1.getX(),p2.getX()));
+        }
+        else if ((p1.getY().getNumerator() != 0)||(p2.getY().getNumerator() != 0))
+        {
+            y = frac.divide(frac.subtract(p2.getConstant(),p1.getConstant()),frac.subtract(p1.getY(),p2.getY()));
+        }
+        else if ((p1.getZ().getNumerator() != 0)||(p2.getZ().getNumerator() != 0))
+        {
+            y = frac.divide(frac.subtract(p2.getConstant(),p1.getConstant()),frac.subtract(p1.getZ(),p2.getZ()));
+        }
+
+        return new PlanePOIResult(new Vector3D(x,y,z),lineVect);
+    }
+
+    public static PlanePOIResult planeIntersection(Plane p1, Plane p2, Plane p3)
+    {
+        return null;//temp
+    }
+
     public static void main(String[] args) {
         /*for (int i = 0; i < u.length; i++) {
             temp = input.nextLine();
