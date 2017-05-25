@@ -90,7 +90,7 @@ public class FractionCalc {
         return euc(B, temp.getRemainder(), depthCount);
     }
 
-    private static int getGcf(int A, int B) {
+    public static int getGcf(int A, int B) {
 
         if (A == 0 || B == 0) {
             return 1;

@@ -127,6 +127,14 @@ public class RnCalc {
         return magnitude(projection(p0p, plane.getNormal()));
     }
 
+    private static Boolean vectorEquivilance (Vector3D vect1, Vector3D vect2)
+    {
+        if ((vect1.getX().getNumerator()!=0)&&(vect2.getX().getNumerator()!=0))
+        {
+
+        }
+    }
+
     public static LinePOIResult lineIntersection(Vector3D t0, Vector3D t, Vector3D s0, Vector3D s) {
 
         if (magnitude(crossProduct(s, t)).getNumerator() == 0)
