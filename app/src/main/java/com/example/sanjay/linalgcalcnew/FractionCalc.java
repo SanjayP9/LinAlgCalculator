@@ -45,6 +45,20 @@ public class FractionCalc {
         return new Fraction(frac.getDenominator(), frac.getNumerator());
     }
 
+    public boolean equals(Fraction frac1, Fraction frac2)
+    {
+        frac1 = simplifyFraction(frac1);
+        frac2 = simplifyFraction(frac2);
+
+        if (frac1.getNumerator()==frac2.getNumerator()) {
+            if ((frac1.getNumerator() == 0) || (frac1.getDenominator() == frac2.getDenominator()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static Fraction simplifyFraction(Fraction frac) {
         if (frac.getNumerator() == frac.getDenominator()) {
             return new Fraction(1, 1);

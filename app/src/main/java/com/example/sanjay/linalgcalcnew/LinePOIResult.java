@@ -15,6 +15,7 @@ public class LinePOIResult
     }
     private LinePOIResult.IntersectionType intersectionType;
     private Vector3D poi;
+    private Fraction skewedDistance;
 
     public LinePOIResult(IntersectionType intersectionType) {
         this.intersectionType = intersectionType;
@@ -24,6 +25,12 @@ public class LinePOIResult
     {
        this.intersectionType = IntersectionType.AtPoint;
         this.poi = poi;
+    }
+
+    public LinePOIResult (Fraction skewedDistance)
+    {
+        this.intersectionType = IntersectionType.Skewed;
+        this.skewedDistance = skewedDistance;
     }
 
     public IntersectionType getIntersectionType() {

@@ -1,5 +1,7 @@
 package com.example.sanjay.linalgcalcnew;
 
+import android.support.annotation.BoolRes;
+
 import java.util.Scanner;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Scanner;
  */
 
 public class RnCalc {
-    private static FractionCalc frac;
+    private static FractionCalc frac = new FractionCalc();
 
     public RnCalc() {
         frac = new FractionCalc();
@@ -45,6 +47,13 @@ public class RnCalc {
 
     public static Vector3D multiply(Vector3D u, Vector3D v) {
         return new Vector3D(frac.multiply(u.getX(), v.getX()), frac.multiply(u.getY(), v.getY()), frac.multiply(u.getZ(), v.getZ()));
+    }
+
+    private static boolean equals(Vector3D u, Vector3D v) {
+        if ((frac.equals(u.getX(), v.getX())) && (frac.equals(u.getY(), v.getY())) && (frac.equals(u.getZ(), v.getZ()))) {
+            return true;
+        }
+        return false;
     }
 
     public static Fraction magnitude(Vector3D vector) {
@@ -127,19 +136,44 @@ public class RnCalc {
         return magnitude(projection(p0p, plane.getNormal()));
     }
 
-    private static Boolean vectorEquivilance (Vector3D vect1, Vector3D vect2)
-    {
-        if ((vect1.getX().getNumerator()!=0)&&(vect2.getX().getNumerator()!=0))
-        {
+    private static Boolean vectorEquivalence(Vector3D vect1, Vector3D vect2) {
+        int x = 0;
+        int y = 0;
+        int z = 0;
+        Fraction ratio;
 
+        if (vect1.getX().getNumerator() != 0 && vect2.getX().getNumerator() != 0) {
+            ratio = frac.divide(vect1.getX(), vect2.getX());
+        } else if (vect1.getY().getNumerator() != 0 && vect2.getY().getNumerator() != 0) {
+            ratio = frac.divide(vect1.getY(), vect2.getY());
+        } else if (vect1.getZ().getNumerator() != 0 && vect2.getZ().getNumerator() != 0) {
+            ratio = frac.divide(vect1.getZ(), vect2.getZ());
+        } else {
+            return false;
         }
+
+        Vector3D tempVect1 = scalarMultiply(vect2, ratio);
+        Vector3D tempVect2 = scalarMultiply(vect1, new Fraction(1));
+
+
+        if (equals(tempVect1, tempVect2)) {
+            return true;
+        }
+        return false;
     }
 
     public static LinePOIResult lineIntersection(Vector3D t0, Vector3D t, Vector3D s0, Vector3D s) {
 
-        if (magnitude(crossProduct(s, t)).getNumerator() == 0)
-        {
+        if (magnitude(crossProduct(s, t)).getNumerator() == 0) {
             // if t0 and s0 are equivalent then they are Identical if not they are parallel
+            if (vectorEquivalence(s0, t0)) {
+                return new LinePOIResult(LinePOIResult.IntersectionType.Identical);
+            } else {
+                return new LinePOIResult(LinePOIResult.IntersectionType.Parallel);
+            }
+
+        } else {
+
         }
         return null;//temp
     }
@@ -155,24 +189,18 @@ public class RnCalc {
         Fraction y = new Fraction();
         Fraction z = new Fraction();
 
-        if ((p1.getX().getNumerator() != 0)||(p2.getX().getNumerator() != 0))
-        {
-            x = frac.divide(frac.subtract(p2.getConstant(),p1.getConstant()),frac.subtract(p1.getX(),p2.getX()));
-        }
-        else if ((p1.getY().getNumerator() != 0)||(p2.getY().getNumerator() != 0))
-        {
-            y = frac.divide(frac.subtract(p2.getConstant(),p1.getConstant()),frac.subtract(p1.getY(),p2.getY()));
-        }
-        else if ((p1.getZ().getNumerator() != 0)||(p2.getZ().getNumerator() != 0))
-        {
-            y = frac.divide(frac.subtract(p2.getConstant(),p1.getConstant()),frac.subtract(p1.getZ(),p2.getZ()));
+        if ((p1.getX().getNumerator() != 0) || (p2.getX().getNumerator() != 0)) {
+            x = frac.divide(frac.subtract(p2.getConstant(), p1.getConstant()), frac.subtract(p1.getX(), p2.getX()));
+        } else if ((p1.getY().getNumerator() != 0) || (p2.getY().getNumerator() != 0)) {
+            y = frac.divide(frac.subtract(p2.getConstant(), p1.getConstant()), frac.subtract(p1.getY(), p2.getY()));
+        } else if ((p1.getZ().getNumerator() != 0) || (p2.getZ().getNumerator() != 0)) {
+            y = frac.divide(frac.subtract(p2.getConstant(), p1.getConstant()), frac.subtract(p1.getZ(), p2.getZ()));
         }
 
-        return new PlanePOIResult(new Vector3D(x,y,z),lineVect);
+        return new PlanePOIResult(new Vector3D(x, y, z), lineVect);
     }
 
-    public static PlanePOIResult planeIntersection(Plane p1, Plane p2, Plane p3)
-    {
+    public static PlanePOIResult planeIntersection(Plane p1, Plane p2, Plane p3) {
         return null;//temp
     }
 
@@ -220,13 +248,13 @@ public class RnCalc {
         Vector3D result = projection(new Vector3D(u[0], u[1], u[2]), new Vector3D(v[0], v[1], v[2]));
 
         System.out.println(result.toString());*/
-        Fraction[] u = new Fraction[3];
+        Vector3D u, v, m;
 
-        u[0] = new Fraction(-4, 1);
-        u[1] = new Fraction(8, 2);
-        u[2] = new Fraction(16, 2);
+        u = new Vector3D(new Fraction(-4, 1), new Fraction(8, 2), new Fraction(16, 2));
+        m = new Vector3D(new Fraction(-8, 1), new Fraction(16, 2), new Fraction(32, 2));
+        v = new Vector3D(new Fraction(7, 4), new Fraction(-8, 5), new Fraction(16, 7));
 
-        System.out.println(magnitude(new Vector3D(u[0], u[1], u[2])));
+        System.out.println(vectorEquivalence(u, v));
 
 
     }
