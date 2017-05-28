@@ -4,36 +4,57 @@ import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Created by Sanjay on 5/26/2017.
  */
 
-public class MyAdapter extends ArrayAdapter<String>
-{
-    String [] names;
-    int[] flags;
+public class MyAdapter extends ArrayAdapter<String> {
+    String[] titles;
+    int[] icons;
     Context context;
 
-    public MyAdapter(@NonNull Context context, @LayoutRes int resource ,int[] flags, String[] names)
-    {
+    public MyAdapter(@NonNull Context context, int[] icons, String[] titles) {
         super(context, R.layout.listview_item);
-        this.flags = flags;
-        this.names = names;
+        this.icons = icons;
+        this.titles = titles;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return names.length;
+        return titles.length;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return super.getView(position, convertView, parent);
+        ViewHolder viewHolder = new ViewHolder();
+
+        if (convertView == null) {
+            LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = layoutInflater.inflate(R.layout.listview_item, parent, false);
+            viewHolder.icon = (ImageView) convertView.findViewById(R.id.imageView);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.textView);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
+        viewHolder.icon.setImageResource(this.icons[position]);
+        viewHolder.title.setText(this.titles[position]);
+        return convertView;
     }
+
+    static class ViewHolder {
+        ImageView icon;
+        TextView title;
+    }
+
 }
