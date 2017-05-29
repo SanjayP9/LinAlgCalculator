@@ -35,25 +35,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     int[] listImages = new int[]{
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher,
-            R.mipmap.ic_launcher
-    };
-    /*int[] listImages = new int[]{
             R.drawable.m_add_sub,
             R.drawable.m_multiply,
             R.drawable.m_scalar,
@@ -66,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.v_cross,
             R.drawable.v_dot,
             R.drawable.v_proj,
-            R.drawable.v_parallelopiped,
+            R.drawable.not_available,
             R.drawable.not_available,
             R.drawable.not_available,
             R.drawable.not_available,
             R.drawable.not_available
-    };*/
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
