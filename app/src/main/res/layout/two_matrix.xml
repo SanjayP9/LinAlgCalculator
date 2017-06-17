@@ -15,7 +15,7 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="A = n x m matrix\nB = m x p\nC = n x p matrix"
+        android:text="A = n x m matrix\nB = m x p\nResult = n x p matrix"
         android:textAlignment="viewStart"
         android:layout_gravity="start"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"

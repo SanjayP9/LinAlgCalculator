@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 
-        toolbar.setTitle(getResources().getString(R.string.app_name));
+        toolbar.setTitle("Linear Algebra Calculator");
 
         listView = (ListView) findViewById(R.id.listview);
         MyAdapter myAdapter = new MyAdapter(MainActivity.this, this.listImages, this.listNames);
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
-
+                
             }
         });
     }
