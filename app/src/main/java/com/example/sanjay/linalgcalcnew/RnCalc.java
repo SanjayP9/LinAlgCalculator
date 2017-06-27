@@ -15,40 +15,49 @@ public class RnCalc {
         frac = new FractionCalc();
     }
 
+    // Adds two 2-dimensional vectors
     public static Vector2D add(Vector2D u, Vector2D v) {
         return new Vector2D(frac.add(u.getX(), v.getX()), frac.add(u.getY(), v.getY()));
     }
 
+    // Adds two 3-dimensional vectors
     public static Vector3D add(Vector3D u, Vector3D v) {
         return new Vector3D(frac.add(u.getX(), v.getX()),
                 frac.add(u.getY(), v.getY()),
                 frac.add(u.getZ(), v.getZ()));
     }
 
+    // Subtracts two 2-dimensional vectors
     public static Vector2D subtract(Vector2D u, Vector2D v) {
         return add(u, scalarMultiply(v, new Fraction(-1, 1)));
     }
 
+    // Subtracts 2 3-dimensional vectors
     public static Vector3D subtract(Vector3D u, Vector3D v) {
         return add(u, scalarMultiply(v, new Fraction(-1, 1)));
     }
 
+    // Multiplies a 2-dimensional vector by a Fraction
     public static Vector2D scalarMultiply(Vector2D vect, Fraction scalar) {
         return new Vector2D(frac.multiply(vect.getX(), scalar), frac.multiply(vect.getY(), scalar));
     }
 
+    // Multiplies a 3-dimensional vector by a Fraction
     public static Vector3D scalarMultiply(Vector3D vect, Fraction scalar) {
         return new Vector3D(frac.multiply(vect.getX(), scalar), frac.multiply(vect.getY(), scalar), frac.multiply(vect.getZ(), scalar));
     }
 
+    // Multiplies two 2-dimensional vectors
     public static Vector2D multiply(Vector2D u, Vector2D v) {
         return new Vector2D(frac.multiply(u.getX(), v.getX()), frac.multiply(u.getY(), v.getY()));
     }
 
+    // Multiplies 2 3-dimensional vectors
     public static Vector3D multiply(Vector3D u, Vector3D v) {
         return new Vector3D(frac.multiply(u.getX(), v.getX()), frac.multiply(u.getY(), v.getY()), frac.multiply(u.getZ(), v.getZ()));
     }
 
+    // Checks if two 3-dimensional vectors are the same
     private static boolean equals(Vector3D u, Vector3D v) {
         if ((frac.equals(u.getX(), v.getX())) && (frac.equals(u.getY(), v.getY())) && (frac.equals(u.getZ(), v.getZ()))) {
             return true;
@@ -56,6 +65,7 @@ public class RnCalc {
         return false;
     }
 
+    // Gets magnitude of a 3-dimensional vector
     public static Fraction magnitude(Vector3D vector) {
         Fraction result = new Fraction();
 
@@ -80,6 +90,7 @@ public class RnCalc {
         return result;
     }
 
+    // Cross product of 2 3-dimensional vectors [u2*v3-u3*v3, u3*v1-u1*v3, u1*v2 - u2*v1]
     public static Vector3D crossProduct(Vector3D u, Vector3D v) {
         return new Vector3D(frac.subtract(frac.multiply(u.getY(), v.getZ()), frac.multiply(u.getZ(), v.getY())),
                 frac.subtract(frac.multiply(u.getZ(), v.getX()), frac.multiply(u.getX(), v.getZ())),
@@ -87,10 +98,12 @@ public class RnCalc {
 
     }
 
+    // Dot product of two 2-dimensional vectors u1*v1 + u2*v2
     public static Fraction dotProduct(Vector2D u, Vector2D v) {
         return frac.add(frac.multiply(u.getX(), v.getX()), frac.multiply(u.getY(), v.getY()));
     }
 
+    // Dot product of two 3-dimensional vectors u1*v1 + u2*v2 + u3*v3
     public static Fraction dotProduct(Vector3D u, Vector3D v) {
         Fraction x = frac.multiply(u.getX(), v.getX());
         Fraction y = frac.multiply(u.getY(), v.getY());
@@ -102,6 +115,7 @@ public class RnCalc {
         return result;
     }
 
+    // Projection of vector u onto vector v using formula [(u⋅v)/||v||]⋅v (2D)
     public static Vector2D projection(Vector2D u, Vector2D v) {
         Fraction scalar = frac.multiply(dotProduct(u, v), (frac.reciprocal(dotProduct(v, v))));
 
@@ -109,7 +123,7 @@ public class RnCalc {
                 frac.multiply(v.getY(), scalar));
     }
 
-    // Projection of U onto V
+    // Projection of vector u onto vector v using formula [(u⋅v)/||v||]⋅v (3D)
     public static Vector3D projection(Vector3D u, Vector3D v) {
         Fraction scalar = frac.multiply(dotProduct(u, v), (frac.reciprocal(dotProduct(v, v))));
 
@@ -118,10 +132,12 @@ public class RnCalc {
                 frac.multiply(v.getZ(), scalar));
     }
 
+    // Volume of a parallelepiped (u x v)⋅w
     public static Fraction parallelepipedVolume(Vector3D u, Vector3D v, Vector3D w) {
         return dotProduct(crossProduct(u, v), w);
     }
 
+    // Distance of a point in 3D space to a plane
     public static Fraction pointToPlane(Vector3D p, Plane plane) {
         Vector3D p0;
 
@@ -136,6 +152,7 @@ public class RnCalc {
         return magnitude(projection(p0p, plane.getNormal()));
     }
 
+    // Checks if 2 3D vectors are equivalent by finding a common factor in between the two factors
     private static Boolean vectorEquivalence(Vector3D vect1, Vector3D vect2) {
         int x = 0;
         int y = 0;
@@ -162,6 +179,7 @@ public class RnCalc {
         return false;
     }
 
+    //
     public static LinePOIResult lineIntersection(Vector3D t0, Vector3D t, Vector3D s0, Vector3D s) {
 
         if (magnitude(crossProduct(s, t)).getNumerator() == 0) {

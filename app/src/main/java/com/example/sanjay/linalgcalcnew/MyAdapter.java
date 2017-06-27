@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 /**
  * Created by Sanjay on 5/26/2017.
+ * Used for main menu selection screen
  */
 
 public class MyAdapter extends ArrayAdapter<String> {
