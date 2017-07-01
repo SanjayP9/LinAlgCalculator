@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 /**
  * Created by Sanjay on 5/26/2017.
- * Used for main menu selection screen
+ * Image/Test adapter for main menu selection screen
  */
 
 public class MyAdapter extends ArrayAdapter<String> {
@@ -53,7 +53,7 @@ public class MyAdapter extends ArrayAdapter<String> {
         return convertView;
     }
 
-    static class ViewHolder {
+    private static class ViewHolder {
         ImageView icon;
         TextView title;
     }

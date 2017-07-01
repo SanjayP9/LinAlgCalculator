@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 /**
  * Created by Sanjay on 5/12/2017.
+ * FractionCalc.java is used for all fraction calculations
  */
 
 public class FractionCalc {
@@ -14,6 +15,7 @@ public class FractionCalc {
     public FractionCalc() {
     }
 
+    // Adds 2 fractions
     public static Fraction add(Fraction frac1, Fraction frac2) {
 
         return simplifyFraction(new Fraction(frac1.getNumerator() * frac2.getDenominator() +
@@ -22,43 +24,48 @@ public class FractionCalc {
 
     }
 
+    // Subtracts 2 fractions using add() and scalarMultiply()
     public static Fraction subtract(Fraction frac1, Fraction frac2) {
         return add(frac1, scalarMultiply(frac2, -1));
     }
 
+    // Multiplies the numerator and denominator of 2 fractions then puts it in lowest terms
     public static Fraction multiply(Fraction frac1, Fraction frac2) {
 
         return simplifyFraction(new Fraction(frac1.getNumerator() * frac2.getNumerator(),
                 frac1.getDenominator() * frac2.getDenominator()));
-
     }
 
+    // Multiplies fractions numerator by an integer then puts it in lowest terms
     public static Fraction scalarMultiply(Fraction frac, int scalar) {
         return simplifyFraction(new Fraction(frac.getNumerator() * scalar, frac.getDenominator()));
     }
 
+    // Divides a fraction by another by getting reciprocal then multiplying
     public static Fraction divide(Fraction frac1, Fraction frac2) {
         return multiply(frac1, reciprocal(frac2));
     }
 
+    // Switches numerator and denominator of a fraction
     public static Fraction reciprocal(Fraction frac) {
         return new Fraction(frac.getDenominator(), frac.getNumerator());
     }
 
-    public boolean equals(Fraction frac1, Fraction frac2)
-    {
+    // Returns boolean based on if 2 fractions are equivalent by putting in lowest terms and comparing
+    public boolean equals(Fraction frac1, Fraction frac2) {
         frac1 = simplifyFraction(frac1);
         frac2 = simplifyFraction(frac2);
 
-        if (frac1.getNumerator()==frac2.getNumerator()) {
-            if ((frac1.getNumerator() == 0) || (frac1.getDenominator() == frac2.getDenominator()))
-            {
+        if (frac1.getNumerator() == frac2.getNumerator()) {
+            if ((frac1.getNumerator() == 0) || (frac1.getDenominator() == frac2.getDenominator())) {
                 return true;
             }
         }
         return false;
     }
 
+    // Returns simplified fraction by dividing the numerator and denominator by the
+    // greatest common factor
     public static Fraction simplifyFraction(Fraction frac) {
         if (frac.getNumerator() == frac.getDenominator()) {
             return new Fraction(1, 1);
@@ -75,7 +82,9 @@ public class FractionCalc {
         return new Fraction(frac.getNumerator() / gcf, frac.getDenominator() / gcf);
     }
 
-    // A is larger integer
+    // Uses Euclidean's algorithm to find the greatest common factor
+    // en.wikipedia.org/wiki/Euclidean_algorithm
+    // **A is larger integer**
     private static Tuple findRemainder(int A, int B) {
         int temp = A;
         int count = 0;

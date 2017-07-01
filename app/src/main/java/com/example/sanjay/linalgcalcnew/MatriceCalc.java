@@ -6,6 +6,7 @@ import java.util.Random;
 
 /**
  * Created by Sanjay on 5/12/2017.
+ * MarticieCalc.java contains all matrices calculations
  */
 
 public class MatriceCalc {
@@ -15,6 +16,7 @@ public class MatriceCalc {
         frac = new FractionCalc();
     }
 
+    // Transposes a given matrix of fractions.
     public static Fraction[][] transpose(Fraction[][] m) {
         Fraction[][] result = new Fraction[m[0].length][m.length];
 
@@ -78,7 +80,8 @@ public class MatriceCalc {
             Fraction det = new Fraction();
 
             for (int i = 0; i < m.length; i++) {
-                det = frac.add(det, frac.multiply(determinant(trimMatrix(m, i, 0)), frac.scalarMultiply(m[0][i], ((int) Math.pow((-1), i + 2)))));
+                det = frac.add(det, frac.multiply(determinant(trimMatrix(m, i, 0)),
+                        frac.scalarMultiply(m[0][i], ((int) Math.pow((-1), i + 2)))));
             }
 
             return det;
@@ -90,7 +93,8 @@ public class MatriceCalc {
 
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[0].length; j++) {
-                result[i][j] = frac.scalarMultiply(determinant(trimMatrix(m, j, i)), (int) (Math.pow(-1, i + j + 2)));
+                result[i][j] = frac.scalarMultiply(determinant(trimMatrix(m, j, i)),
+                        (int) (Math.pow(-1, i + j + 2)));
             }
         }
         return transpose(result);
@@ -148,6 +152,7 @@ public class MatriceCalc {
     }
 
 
+    // TESTING //
     public static void main(String[] args) {
 
         Fraction[][] m1 = new Fraction[][]{
@@ -171,4 +176,5 @@ public class MatriceCalc {
         System.out.println(result.toString());
 
     }
+    // TESTING //
 }
