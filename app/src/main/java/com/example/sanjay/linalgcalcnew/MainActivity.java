@@ -1,6 +1,7 @@
 package com.example.sanjay.linalgcalcnew;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -67,11 +68,22 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listview);
         MyAdapter myAdapter = new MyAdapter(MainActivity.this, this.listImages, this.listNames);
         listView.setAdapter(myAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
-            {
-                
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                // when int i is less than 7 it intents to the matrix size entry
+                if (i < 7) {
+                    Intent sizeIntent = new Intent(MainActivity.this, MatrixSizeActivity.class);
+                    sizeIntent.putExtra("listNames", listNames[i]);
+                    startActivity(sizeIntent);
+                }
+                else
+                {
+                    // Use intent to transfer to vector entry activity
+                    Intent vectorIntent = new Intent(MainActivity.this, VectorEntryActivity.class);
+
+                }
             }
         });
     }

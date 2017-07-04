@@ -18,21 +18,28 @@ import android.view.View;
  * button in tool bar that goes to matrix entry screen
  */
 
-public class TwoMatrixSizeActivity extends AppCompatActivity {
+public class MatrixSizeActivity extends AppCompatActivity {
     Toolbar toolbar;
 
+    // Create xml for double matrix with operation and do xml for single matrix.
+    // change titles to differentiate
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.two_matrix);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar2);
         toolbar.setTitle("Set Matrix Size");
+
+        Bundle matrixBundle = getIntent().getExtras();
+
+        if (matrixBundle != null) {
+            toolbar.setTitle(matrixBundle.getString("listNames"));
+        }
     }
 
 
-    public void sendMessage(View view)
-    {
+    public void sendMessage(View view) {
         //Intent intent = new Intent(this,)
     }
 
