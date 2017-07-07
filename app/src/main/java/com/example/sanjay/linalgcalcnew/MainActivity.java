@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
+/*TODO: Add string array for size descriptions and for general function description*/
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
@@ -78,11 +79,17 @@ public class MainActivity extends AppCompatActivity {
                     sizeIntent.putExtra("listNames", listNames[i]);
                     startActivity(sizeIntent);
                 }
-                else
+                else if (i<13)
                 {
                     // Use intent to transfer to vector entry activity
                     Intent vectorIntent = new Intent(MainActivity.this, VectorEntryActivity.class);
+                    vectorIntent.putExtra("listNames", listNames[i]);
+                    startActivity(vectorIntent);
 
+                }
+                else
+                {
+                    //Scalar equation entry
                 }
             }
         });

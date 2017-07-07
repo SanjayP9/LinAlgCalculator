@@ -25,7 +25,7 @@ public class VectorEntryActivity extends AppCompatActivity
 
         if (vectorBundle != null)
         {
-            toolbar.setTitle(vectorBundle.getString(""));
+            toolbar.setTitle(vectorBundle.getString("listNames"));
         }
 
     }
