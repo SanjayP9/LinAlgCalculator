@@ -9,22 +9,21 @@ import java.util.Scanner;
  */
 
 public class RnCalc {
-    private static FractionCalc frac = new FractionCalc();
 
-    public RnCalc() {
-        frac = new FractionCalc();
+    private RnCalc() {
+
     }
 
     // Adds two 2-dimensional vectors
     public static Vector2D add(Vector2D u, Vector2D v) {
-        return new Vector2D(frac.add(u.getX(), v.getX()), frac.add(u.getY(), v.getY()));
+        return new Vector2D(FractionCalc.add(u.getX(), v.getX()), FractionCalc.add(u.getY(), v.getY()));
     }
 
     // Adds two 3-dimensional vectors
     public static Vector3D add(Vector3D u, Vector3D v) {
         return new Vector3D(frac.add(u.getX(), v.getX()),
-                frac.add(u.getY(), v.getY()),
-                frac.add(u.getZ(), v.getZ()));
+                FractionCalc.add(u.getY(), v.getY()),
+                FractionCalc.add(u.getZ(), v.getZ()));
     }
 
     // Subtracts two 2-dimensional vectors
@@ -39,27 +38,27 @@ public class RnCalc {
 
     // Multiplies a 2-dimensional vector by a Fraction
     public static Vector2D scalarMultiply(Vector2D vect, Fraction scalar) {
-        return new Vector2D(frac.multiply(vect.getX(), scalar), frac.multiply(vect.getY(), scalar));
+        return new Vector2D(FractionCalc.multiply(vect.getX(), scalar), FractionCalc.multiply(vect.getY(), scalar));
     }
 
     // Multiplies a 3-dimensional vector by a Fraction
     public static Vector3D scalarMultiply(Vector3D vect, Fraction scalar) {
-        return new Vector3D(frac.multiply(vect.getX(), scalar), frac.multiply(vect.getY(), scalar), frac.multiply(vect.getZ(), scalar));
+        return new Vector3D(FractionCalc.multiply(vect.getX(), scalar), FractionCalc.multiply(vect.getY(), scalar), FractionCalc.multiply(vect.getZ(), scalar));
     }
 
     // Multiplies two 2-dimensional vectors
     public static Vector2D multiply(Vector2D u, Vector2D v) {
-        return new Vector2D(frac.multiply(u.getX(), v.getX()), frac.multiply(u.getY(), v.getY()));
+        return new Vector2D(FractionCalc.multiply(u.getX(), v.getX()), FractionCalc.multiply(u.getY(), v.getY()));
     }
 
     // Multiplies 2 3-dimensional vectors
     public static Vector3D multiply(Vector3D u, Vector3D v) {
-        return new Vector3D(frac.multiply(u.getX(), v.getX()), frac.multiply(u.getY(), v.getY()), frac.multiply(u.getZ(), v.getZ()));
+        return new Vector3D(FractionCalc.multiply(u.getX(), v.getX()), FractionCalc.multiply(u.getY(), v.getY()), FractionCalc.multiply(u.getZ(), v.getZ()));
     }
 
     // Checks if two 3-dimensional vectors are the same
     private static boolean equals(Vector3D u, Vector3D v) {
-        if ((frac.equals(u.getX(), v.getX())) && (frac.equals(u.getY(), v.getY())) && (frac.equals(u.getZ(), v.getZ()))) {
+        if ((FractionCalc.equals(u.getX(), v.getX())) && (FractionCalc.equals(u.getY(), v.getY())) && (FractionCalc.equals(u.getZ(), v.getZ()))) {
             return true;
         }
         return false;
