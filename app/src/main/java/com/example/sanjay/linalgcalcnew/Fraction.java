@@ -102,7 +102,6 @@ public class Fraction {
     }
 
     // Returns boolean based on if 2 fractions are equivalent by putting in lowest terms and comparing
-    @Override
     public static boolean equals(Fraction frac1, Fraction frac2) {
         frac1 = simplifyFraction(frac1);
         frac2 = simplifyFraction(frac2);

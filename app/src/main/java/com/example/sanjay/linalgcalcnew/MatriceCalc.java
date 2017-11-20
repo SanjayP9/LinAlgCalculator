@@ -32,7 +32,7 @@ public class MatriceCalc {
 
         for (int i = 0; i < m1.length; i++) {
             for (int j = 0; j < m1[0].length; j++) {
-                resultMatrix[i][j] = FractionCalc.multiply(m1[i][j], m2[i][j]);
+                resultMatrix[i][j] = Fraction.multiply(m1[i][j], m2[i][j]);
             }
         }
         return resultMatrix;
@@ -45,7 +45,7 @@ public class MatriceCalc {
     public static Fraction[][] scalarMultiply(Fraction[][] m, Fraction scalar) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[0].length; j++) {
-                m[i][j] = FractionCalc.multiply(m[i][j], scalar);
+                m[i][j] = Fraction.multiply(m[i][j], scalar);
             }
         }
         return m;
@@ -63,7 +63,7 @@ public class MatriceCalc {
         for (int k = 0; k < m2[0].length; k++) {
             for (int i = 0; i < m1.length; i++) {
                 for (int j = 0; j < m1[0].length; j++) {
-                    result[i][k] = FractionCalc.add(result[i][k], FractionCalc.multiply(m1[i][j], m2[j][k]));
+                    result[i][k] = Fraction.add(result[i][k], Fraction.multiply(m1[i][j], m2[j][k]));
                 }
             }
         }
@@ -73,14 +73,14 @@ public class MatriceCalc {
 
     public static Fraction determinant(Fraction[][] m) {
         if (m.length == 2) {
-            return FractionCalc.subtract(FractionCalc.multiply(m[0][0], m[1][1]), FractionCalc.multiply(m[0][1], m[1][0]));
+            return Fraction.subtract(Fraction.multiply(m[0][0], m[1][1]), Fraction.multiply(m[0][1], m[1][0]));
         } else {
 
             Fraction det = new Fraction();
 
             for (int i = 0; i < m.length; i++) {
-                det = FractionCalc.add(det, FractionCalc.multiply(determinant(trimMatrix(m, i, 0)),
-                        FractionCalc.scalarMultiply(m[0][i], ((int) Math.pow((-1), i + 2)))));
+                det = Fraction.add(det, Fraction.multiply(determinant(trimMatrix(m, i, 0)),
+                        Fraction.scalarMultiply(m[0][i], ((int) Math.pow((-1), i + 2)))));
             }
 
             return det;
@@ -92,7 +92,7 @@ public class MatriceCalc {
 
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[0].length; j++) {
-                result[i][j] = FractionCalc.scalarMultiply(determinant(trimMatrix(m, j, i)),
+                result[i][j] = Fraction.scalarMultiply(determinant(trimMatrix(m, j, i)),
                         (int) (Math.pow(-1, i + j + 2)));
             }
         }
@@ -125,7 +125,7 @@ public class MatriceCalc {
     }
 
     public static Fraction[][] inverse(Fraction[][] m) {
-        return scalarMultiply(adjugate(m), FractionCalc.reciprocal(determinant(m)));
+        return scalarMultiply(adjugate(m), Fraction.reciprocal(determinant(m)));
     }
 
     private static Fraction[][] genMatrix(int size) {
