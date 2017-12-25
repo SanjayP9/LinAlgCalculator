@@ -16,7 +16,12 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     ListView listView;
+
     String[] listNames = new String[]{
+            "Matrix",
+            "Vector"
+    };
+    /*String[] listNames = new String[]{
             "Add/Subtract Matrices",
             "Multiply Matrices",
             "Scalar Multiply Matrices",
@@ -35,8 +40,12 @@ public class MainActivity extends AppCompatActivity {
             "Intersection of 2 Planes",
             "Intersection of 3 Planes"
     };
-
+*/
     int[] listImages = new int[]{
+            R.drawable.m_add_sub,
+            R.drawable.v_add_sub
+    };
+    /*int[] listImages = new int[]{
             R.drawable.m_add_sub,
             R.drawable.m_multiply,
             R.drawable.m_scalar,
@@ -54,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.not_available,
             R.drawable.not_available,
             R.drawable.not_available
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,23 +82,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                // when int i is less than 7 it intents to the matrix size entry
-                if (i < 7) {
-                    Intent sizeIntent = new Intent(MainActivity.this, MatrixSizeActivity.class);
-                    sizeIntent.putExtra("listNames", listNames[i]);
-                    startActivity(sizeIntent);
-                }
-                else if (i<13)
+                if (i == 0)
                 {
-                    // Use intent to transfer to vector entry activity
-                    Intent vectorIntent = new Intent(MainActivity.this, VectorEntryActivity.class);
-                    vectorIntent.putExtra("listNames", listNames[i]);
-                    startActivity(vectorIntent);
-
+                    Intent matrixIntent = new Intent(MainActivity.this, MatrixSizeActivity.class);
+                    startActivity(matrixIntent);
                 }
-                else
+                else if (i == 1)
                 {
-                    //Scalar equation entry
+                    //Intent matrixIntent = new Intent(MainActivity.this, MatrixSizeActivity.class);
+                    //startActivity(matrixIntent);
                 }
             }
         });

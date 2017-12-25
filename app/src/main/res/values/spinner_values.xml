@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="matrix_lengths">
+    <integer-array name="matrix_lengths">
         <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
-    </string-array>
+    </integer-array>
 
+    <string name="matrix_prompt">Choose an Operation</string>
+    <string-array name="matrix_operations">
+        <item>Add</item>
+        <item>Subtract</item>
+        <item>Multiply</item>
+        <item>Scalar Multiply</item>
+        <item>Determinant</item>
+        <item>Adjugate</item>
+        <item>Cofactor</item>
+        <item>Inverse</item>
+    </string-array>
 </resources>
