@@ -18,7 +18,7 @@
         </activity>
 
         <activity
-            android:name=".MatrixSizeActivity"
+            android:name=".MatrixMainActivity"
             android:screenOrientation="portrait" />
     </application>
 

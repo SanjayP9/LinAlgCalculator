@@ -11,13 +11,11 @@ public class Fraction {
     private boolean denRoot;
 
     public Fraction() {
-        this.numerator = 0;
-        this.denominator = 1;
+        this(0, 1);
     }
 
     public Fraction(int num) {
-        this.numerator = num;
-        this.denominator = 1;
+        this(num, 1);
     }
 
     public Fraction(int num, int den) {
@@ -62,6 +60,10 @@ public class Fraction {
 
     public void setDenRoot(boolean denRoot) {
         this.denRoot = denRoot;
+    }
+
+    public double getDecimal() {
+        return (this.numerator * 1.0d) / (this.denominator * 1.0d);
     }
 
 

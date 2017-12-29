@@ -157,12 +157,15 @@ public class MatriceCalc {
         Fraction[][] m1 = new Fraction[][]{
                 {new Fraction(6), new Fraction(8), new Fraction(4), new Fraction(9)},
                 {new Fraction(3), new Fraction(6), new Fraction(0), new Fraction(0)},
+                {new Fraction(3), new Fraction(6), new Fraction(0), new Fraction(0)},
                 {new Fraction(5), new Fraction(10), new Fraction(2), new Fraction(9)},
                 {new Fraction(1), new Fraction(0), new Fraction(10), new Fraction(1)}
         };
 
         displayMatrix(m1);
-        System.out.println("\nAdjugate");
+        System.out.println(m1.length + " " + m1[0].length);
+        // Rows is the number of arrays (.length) and columns is the size of each array([0].length)
+        /*System.out.println("\nAdjugate");
 
         displayMatrix(adjugate(m1));
 
@@ -172,7 +175,7 @@ public class MatriceCalc {
         System.out.println("\nDeterminant");
 
         Fraction result = determinant(m1);
-        System.out.println(result.toString());
+        System.out.println(result.toString());*/
 
     }
     // TESTING //

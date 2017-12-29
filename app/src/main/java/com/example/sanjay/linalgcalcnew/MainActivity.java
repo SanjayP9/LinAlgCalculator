@@ -1,6 +1,5 @@
 package com.example.sanjay.linalgcalcnew;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
-import java.util.List;
 
 /*TODO: Add string array for size descriptions and for general function description*/
 public class MainActivity extends AppCompatActivity {
@@ -82,14 +79,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i == 0)
+                if (i == 0) // Matrix Activity
                 {
-                    Intent matrixIntent = new Intent(MainActivity.this, MatrixSizeActivity.class);
+                    Intent matrixIntent = new Intent(MainActivity.this, MatrixMainActivity.class);
                     startActivity(matrixIntent);
-                }
-                else if (i == 1)
+                } else if (i == 1) // Vector Activity
                 {
-                    //Intent matrixIntent = new Intent(MainActivity.this, MatrixSizeActivity.class);
+                    //Intent matrixIntent = new Intent(MainActivity.this, MatrixMainActivity.class);
                     //startActivity(matrixIntent);
                 }
             }

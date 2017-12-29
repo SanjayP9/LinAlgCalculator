@@ -1,22 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView1"
+
+    <LinearLayout
+        android:id="@+id/layoutA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Row:"
-        android:gravity="center_vertical"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView2"
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/row"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        <SeekBar
+            android:id="@+id/rowId"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:max="4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Column:"
-        android:gravity="center_vertical"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/column"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+        <SeekBar
+            android:id="@+id/columnId"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="311dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:max="4" />
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/buttonB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enterM" />
+
+    <EditText
+        android:id="@+id/textB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none" />
 
 </LinearLayout>
