@@ -5,50 +5,62 @@
     android:orientation="vertical">
 
 
+    <TextView
+        android:text="@string/mName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/layoutA"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="@string/row"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <SeekBar
             android:id="@+id/rowId"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="343dp"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_gravity="right"
+            android:layout_weight="0.75"
             android:max="4" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layoutB"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:text="@string/column"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <SeekBar
             android:id="@+id/columnId"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="311dp"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_gravity="right"
+            android:layout_weight="0.75"
             android:max="4" />
 
     </LinearLayout>
@@ -56,15 +68,14 @@
 
 
     <Button
-        android:id="@+id/buttonB"
+        android:id="@+id/submitMatrix"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/enterM" />
 
-    <EditText
-        android:id="@+id/textB"
+    <TextView
+        android:id="@+id/matrixText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="none" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -42,14 +44,13 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
                 }
 
                 // set view
-                if (this.matrices.get(position) != null) {
-                    String mName;
-                    mName = (position == 0) ? "A" : "B";
-
-
+                if (this.matrices.get(position).getMatrix() != null) {
+                    // Names are stored in Matrix obj now
+                    //String mName;
+                    //mName = (position == 0) ? "A" : "B";
+                    TextView matrixDisplay = (TextView) convertView.findViewById(R.id.matrixText);
+                    matrixDisplay.setText(this.matrices.get(position).toString());
                 }
-
-
                 break;
 
 
@@ -57,9 +58,10 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
                 if (convertView == null) {
                     convertView = LayoutInflater.from(context).inflate(R.layout.m_result_block, parent, false);
                 }
-
-
-                // set view
+                if (this.matrices.get(2).getMatrix() != null) {
+                    TextView result = (TextView) convertView.findViewById(R.id.textResult);
+                    result.setText(this.matrices.get(2).toString());
+                }
 
                 break;
         }
@@ -71,9 +73,14 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
         return 2;
     }
 
+    /*@Override
+    public int getCount() {
+        return 3;
+    }*/
+
     @Override
     public int getItemViewType(int position) {
-        if (this.matrices.get(position).getIsResult()) {
+        if (this.matrices.get(position).getName().equals("Result")) {
             return RESULT_BLOCK;
         }
         return MATRIX_BLOCK;

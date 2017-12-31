@@ -2,7 +2,8 @@
     <string name="app_name">LinAlgCalcNew</string>
     <string name="row">Row:</string>
     <string name="column">Column:</string>
-    <string name="enterMA">Enter Matrix A</string>
+    <string name="mName"><u>Matrix </u></string>
+    <string name="enterMA">Matrix A</string>
     <string name="enterMB">Enter Matrix B</string>
     <string name="enterM">Enter Matrix</string>
     <string name="result">Result:</string>

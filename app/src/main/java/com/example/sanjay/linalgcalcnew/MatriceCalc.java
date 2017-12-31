@@ -158,12 +158,17 @@ public class MatriceCalc {
                 {new Fraction(6), new Fraction(8), new Fraction(4), new Fraction(9)},
                 {new Fraction(3), new Fraction(6), new Fraction(0), new Fraction(0)},
                 {new Fraction(3), new Fraction(6), new Fraction(0), new Fraction(0)},
-                {new Fraction(5), new Fraction(10), new Fraction(2), new Fraction(9)},
-                {new Fraction(1), new Fraction(0), new Fraction(10), new Fraction(1)}
+                {new Fraction(3), new Fraction(6), new Fraction(0), new Fraction(0)},
+                {new Fraction(5), new Fraction(10), new Fraction(2), new Fraction(9)}
         };
 
-        displayMatrix(m1);
-        System.out.println(m1.length + " " + m1[0].length);
+        /*Matrix temp = new Matrix("A", false);
+        temp.setMatrix(m1);
+
+        System.out.println(temp.toString());*/
+
+        /*displayMatrix(m1);
+        System.out.println(m1.length + " " + m1[0].length);*/
         // Rows is the number of arrays (.length) and columns is the size of each array([0].length)
         /*System.out.println("\nAdjugate");
 

@@ -6,37 +6,43 @@ package com.example.sanjay.linalgcalcnew;
 
 public class Matrix {
 
+    private String name;
     private int rowNum;
     private int colNum;
     private Fraction[][] matrix;
-    private boolean isResult = false;
 
-
-    public Matrix() {
-        this.rowNum = 0;
-        this.colNum = 0;
+    public Matrix(String name) {
+        this.name = name;
     }
 
-    public Matrix(int row, int col, boolean isResult) {
-        if (row <= 0 || row >= 6 || col <= 0 || col >= 6) {
-            throw new IllegalArgumentException();
-        } else {
-            this.rowNum = row;
-            this.colNum = col;
-        }
-    }
+    public Matrix(String name, int row, int col, Fraction[][] matrix) {
+        this(name);
 
-    public Matrix(int row, int col, boolean isResult, Fraction[][] matrix) {
-        this(row, col, isResult);
-        this.matrix = matrix;
+        setRowNum(row);
+        setColNum(col);
+        setMatrix(matrix);
     }
 
     public int getRowNum() {
         return rowNum;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setRowNum(int rowNum) {
-        this.rowNum = rowNum;
+
+        if (rowNum <= 1 || rowNum >= 6) {
+
+            throw new IllegalArgumentException();
+        } else {
+            this.rowNum = rowNum;
+        }
     }
 
     public int getColNum() {
@@ -44,7 +50,12 @@ public class Matrix {
     }
 
     public void setColNum(int colNum) {
-        this.colNum = colNum;
+
+        if (colNum <= 1 || colNum >= 6) {
+            throw new IllegalArgumentException();
+        } else {
+            this.colNum = colNum;
+        }
     }
 
     public Fraction[][] getMatrix() {
@@ -55,24 +66,32 @@ public class Matrix {
         this.matrix = matrix;
     }
 
-    public boolean getIsResult() {
-        return isResult;
-    }
-
-    public void setResult(boolean result) {
-        isResult = result;
-    }
-
     @Override
     public String toString() {
         String result = "";
 
         for (int i = 0; i < matrix.length; i++) {
+
+            //result += (i == (matrix.length / 2)) ? (this.name + " = ") : ("\t");
+
             for (int j = 0; j < matrix[0].length; j++) {
-                result += matrix[i][j].toString() + "\t";
+                result += "\t" + matrix[i][j].toString();
             }
             result += "\n";
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        Fraction[][] m1 = new Fraction[][]{
+                {new Fraction(6), new Fraction(8845), new Fraction(4), new Fraction(9)},
+                {new Fraction(3544), new Fraction(6), new Fraction(5540), new Fraction(0)},
+                {new Fraction(30), new Fraction(6), new Fraction(0), new Fraction(450)},
+                {new Fraction(3), new Fraction(6), new Fraction(4540), new Fraction(0)},
+                {new Fraction(5), new Fraction(10), new Fraction(4842), new Fraction(9)}
+        };
+
+
+        //Matrix temp = new Matrix()
     }
 }

@@ -8,7 +8,7 @@
         android:id="@+id/layoutResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -16,10 +16,9 @@
             android:text="@string/result"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <EditText
+        <TextView
             android:id="@+id/textResult"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>
