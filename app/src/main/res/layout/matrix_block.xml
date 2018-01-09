@@ -12,7 +12,7 @@
         android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:id="@+id/layoutA"
+        android:id="@+id/layoutRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -35,11 +35,10 @@
             android:layout_gravity="right"
             android:layout_weight="0.75"
             android:max="4" />
-
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutB"
+        android:id="@+id/layoutCol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -62,7 +61,6 @@
             android:layout_gravity="right"
             android:layout_weight="0.75"
             android:max="4" />
-
     </LinearLayout>
 
 
@@ -73,9 +71,39 @@
         android:layout_height="wrap_content"
         android:text="@string/enterM" />
 
-    <TextView
-        android:id="@+id/matrixText"
+    <!--<TextView-->
+        <!--android:id="@+id/matrixText"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+
+                    <TableLayout
+                        android:id="@+id/tableLayout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1">
+                    </TableLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

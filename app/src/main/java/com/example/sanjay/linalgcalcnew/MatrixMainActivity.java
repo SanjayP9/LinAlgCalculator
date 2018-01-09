@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Used to get row and column. after they are entered enter matrix becomes enabled and goes to another
  * activity where its entered and a submit button is pressed. That activity recieves the row and column initially
  * then returns a 2d fraction array which is added to the matricies arraylist. Then they are displayed on the
- * textviews for on this activity. When they are displayed its seekbar is disabled. when both matricies
+ * textviews for on this activity. When they are displayed its seekbar is disabled. when both matrices
  * are displayed and both seekbars are disabled the result is calculated and is shown.
  * When the operation is changed or the reset button is pressed clear saved rows, columns and matrices
  * and set everything back to normal.
@@ -65,6 +65,4 @@ public class MatrixMainActivity extends AppCompatActivity {
         MatrixBlockAdapter matrixBlockAdapter = new MatrixBlockAdapter(getApplicationContext(), R.layout.matrix_block, matrices);
         listView.setAdapter(matrixBlockAdapter);
     }
-
-
 }

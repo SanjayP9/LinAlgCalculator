@@ -1,16 +1,21 @@
 package com.example.sanjay.linalgcalcnew;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -48,8 +53,29 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
                     // Names are stored in Matrix obj now
                     //String mName;
                     //mName = (position == 0) ? "A" : "B";
-                    TextView matrixDisplay = (TextView) convertView.findViewById(R.id.matrixText);
-                    matrixDisplay.setText(this.matrices.get(position).toString());
+                    TableLayout matrixDisplay = (TableLayout) convertView.findViewById(R.id.tableLayout1);
+                    //matrixDisplay.setText(this.matrices.get(position).toString());
+
+                    fillTable(this.matrices.get(position).getMatrix(), matrixDisplay);
+
+                    /*TableRow tempRow = new TableRow(this.context);
+                    TextView tempView = new TextView(this.context);
+
+                    for (int i = 0; i < this.matrices.get(position).getMatrix().length; i++) {
+                        for (int j = 0; j < this.matrices.get(position).getMatrix()[0].length; j++) {
+                            tempView.setText(this.matrices.get(position).getMatrix()[i][j].toString());
+
+                            if (tempView.getParent() != null) {
+                                ((ViewGroup) tempView.getParent()).removeView(tempView);
+                            }
+
+                            tempRow.addView(tempView);
+                        }
+                        if (tempRow.getParent() != null) {
+                            ((ViewGroup) tempRow.getParent()).removeView(tempRow);
+                        }
+                        matrixDisplay.addView(tempRow);
+                    }*/
                 }
                 break;
 
@@ -84,5 +110,29 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
             return RESULT_BLOCK;
         }
         return MATRIX_BLOCK;
+    }
+
+    private void fillTable(Fraction[][] matrix, TableLayout table) {
+        table.removeAllViews();
+        for (int i = 0; i < matrix.length; i++) {
+            TableRow row = new TableRow(this.context);
+            row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+            for (int j = 0; j < matrix[0].length; j++) {
+                TextView edit = new TextView(this.context);
+                //edit.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL| InputType.TYPE_NUMBER_FLAG_SIGNED);
+                //edit.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+                edit.setText(matrix[i][j].toString());
+                edit.clearFocus();
+                edit.setPadding(30,0,0,0);
+                edit.setTextSize(12f);
+                edit.setTextColor(Color.BLACK);
+
+                //edit.setKeyListener(null);
+                row.addView(edit);
+            }
+            table.addView(row);
+        }
     }
 }
