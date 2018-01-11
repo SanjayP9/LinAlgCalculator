@@ -4,103 +4,117 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <TextView
-        android:text="@string/mName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/mName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
 
     <LinearLayout
-        android:id="@+id/layoutRow"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="1">
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="0dp"
-            android:layout_weight="0.25"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="@string/row"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <SeekBar
-            android:id="@+id/rowId"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="0dp"
+        <ImageView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_weight="0.75"
-            android:max="4" />
+            android:layout_weight="0.5"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/layoutRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:gravity="center_vertical"
+                    android:text="@string/row"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <Spinner
+                    android:id="@+id/rowDropId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:entries="@array/matrix_lengths" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutCol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.25"
+                    android:gravity="center_vertical"
+                    android:text="@string/column"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                <Spinner
+                    android:id="@+id/colDropId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:entries="@array/matrix_lengths" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/submitMatrix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/enterM" />
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layoutCol"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="0dp"
-            android:layout_weight="0.25"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="@string/column"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-        <SeekBar
-            android:id="@+id/columnId"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_weight="0.75"
-            android:max="4" />
-    </LinearLayout>
-
-
-
-    <Button
-        android:id="@+id/submitMatrix"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enterM" />
 
     <!--<TextView-->
-        <!--android:id="@+id/matrixText"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content" />-->
+    <!--android:id="@+id/matrixText"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content" />-->
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal">
 
                     <TableLayout
                         android:id="@+id/tableLayout1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1">
-                    </TableLayout>
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"></TableLayout>
                 </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>

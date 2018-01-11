@@ -50,32 +50,9 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
 
                 // set view
                 if (this.matrices.get(position).getMatrix() != null) {
-                    // Names are stored in Matrix obj now
-                    //String mName;
-                    //mName = (position == 0) ? "A" : "B";
                     TableLayout matrixDisplay = (TableLayout) convertView.findViewById(R.id.tableLayout1);
-                    //matrixDisplay.setText(this.matrices.get(position).toString());
 
                     fillTable(this.matrices.get(position).getMatrix(), matrixDisplay);
-
-                    /*TableRow tempRow = new TableRow(this.context);
-                    TextView tempView = new TextView(this.context);
-
-                    for (int i = 0; i < this.matrices.get(position).getMatrix().length; i++) {
-                        for (int j = 0; j < this.matrices.get(position).getMatrix()[0].length; j++) {
-                            tempView.setText(this.matrices.get(position).getMatrix()[i][j].toString());
-
-                            if (tempView.getParent() != null) {
-                                ((ViewGroup) tempView.getParent()).removeView(tempView);
-                            }
-
-                            tempRow.addView(tempView);
-                        }
-                        if (tempRow.getParent() != null) {
-                            ((ViewGroup) tempRow.getParent()).removeView(tempRow);
-                        }
-                        matrixDisplay.addView(tempRow);
-                    }*/
                 }
                 break;
 
@@ -99,17 +76,9 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
         return 2;
     }
 
-    /*@Override
-    public int getCount() {
-        return 3;
-    }*/
-
     @Override
     public int getItemViewType(int position) {
-        if (this.matrices.get(position).getName().equals("Result")) {
-            return RESULT_BLOCK;
-        }
-        return MATRIX_BLOCK;
+        return (this.matrices.get(position).getName().equals("Result")) ? RESULT_BLOCK : MATRIX_BLOCK;
     }
 
     private void fillTable(Fraction[][] matrix, TableLayout table) {
@@ -120,16 +89,12 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
 
             for (int j = 0; j < matrix[0].length; j++) {
                 TextView edit = new TextView(this.context);
-                //edit.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL| InputType.TYPE_NUMBER_FLAG_SIGNED);
-                //edit.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
 
                 edit.setText(matrix[i][j].toString());
                 edit.clearFocus();
-                edit.setPadding(30,0,0,0);
+                edit.setPadding(30, 0, 0, 0);
                 edit.setTextSize(12f);
                 edit.setTextColor(Color.BLACK);
-
-                //edit.setKeyListener(null);
                 row.addView(edit);
             }
             table.addView(row);
