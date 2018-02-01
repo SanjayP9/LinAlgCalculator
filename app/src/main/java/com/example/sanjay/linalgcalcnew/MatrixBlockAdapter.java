@@ -18,6 +18,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
@@ -48,6 +50,8 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
                     convertView = LayoutInflater.from(context).inflate(R.layout.matrix_block, parent, false);
                 }
 
+                ((TextView)(convertView.findViewById(R.id.titleText))).setText("Matrix " + this.matrices.get(position).getName());
+
                 // set view
                 if (this.matrices.get(position).getMatrix() != null) {
                     TableLayout matrixDisplay = (TableLayout) convertView.findViewById(R.id.tableLayout1);
@@ -62,8 +66,8 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
                     convertView = LayoutInflater.from(context).inflate(R.layout.m_result_block, parent, false);
                 }
                 if (this.matrices.get(2).getMatrix() != null) {
-                    TextView result = (TextView) convertView.findViewById(R.id.textResult);
-                    result.setText(this.matrices.get(2).toString());
+                    TableLayout resultDisplay = (TableLayout)convertView.findViewById(R.id.tableLayoutResult);
+                    fillTable(this.matrices.get(2).getMatrix(), resultDisplay);
                 }
 
                 break;

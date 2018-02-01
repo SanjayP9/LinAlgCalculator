@@ -54,12 +54,6 @@ public class MatriceCalc {
     public static Fraction[][] multiply(Fraction[][] m1, Fraction[][] m2) {
         Fraction[][] result = new Fraction[m1.length][m2[0].length];
 
-        for (int i = 0; i < result.length; i++) {
-            for (int j = 0; j < result[0].length; j++) {
-                result[i][j] = new Fraction();
-            }
-        }
-
         for (int k = 0; k < m2[0].length; k++) {
             for (int i = 0; i < m1.length; i++) {
                 for (int j = 0; j < m1[0].length; j++) {

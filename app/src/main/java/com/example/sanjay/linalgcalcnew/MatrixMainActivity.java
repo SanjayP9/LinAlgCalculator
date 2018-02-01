@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -64,5 +65,20 @@ public class MatrixMainActivity extends AppCompatActivity {
 
         MatrixBlockAdapter matrixBlockAdapter = new MatrixBlockAdapter(getApplicationContext(), R.layout.matrix_block, matrices);
         listView.setAdapter(matrixBlockAdapter);
+
+        Spinner operationSpinner = (Spinner) (findViewById(R.id.operationSpinner));
+
+        operationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                toolbar.setTitle("*NOTHING SELECTED*");
+            }
+        });
+
     }
 }

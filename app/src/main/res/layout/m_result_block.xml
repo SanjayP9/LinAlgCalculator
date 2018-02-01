@@ -16,9 +16,10 @@
             android:text="@string/result"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <TextView
-            android:id="@+id/textResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <TableLayout
+            android:id="@+id/tableLayoutResult"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"></TableLayout>
     </LinearLayout>
 </LinearLayout>

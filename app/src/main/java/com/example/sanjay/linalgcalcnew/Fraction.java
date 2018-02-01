@@ -30,6 +30,10 @@ public class Fraction {
         this.denRoot = denRoot;
     }
 
+    public Fraction(Fraction fraction) {
+        this(fraction.getNumerator(), fraction.getDenominator(), fraction.isNumRoot(), fraction.isDenRoot());
+    }
+
     public void setNumerator(int numerator) {
         this.numerator = numerator;
     }
