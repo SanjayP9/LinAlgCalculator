@@ -1,24 +1,16 @@
 package com.example.sanjay.linalgcalcnew;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -53,10 +45,10 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
                 ((TextView)(convertView.findViewById(R.id.titleText))).setText("Matrix " + this.matrices.get(position).getName());
 
                 // set view
-                if (this.matrices.get(position).getMatrix() != null) {
+                if (this.matrices.get(position).getMatrixResult() != null) {
                     TableLayout matrixDisplay = (TableLayout) convertView.findViewById(R.id.tableLayout1);
 
-                    fillTable(this.matrices.get(position).getMatrix(), matrixDisplay);
+                    fillTable(this.matrices.get(position).getMatrixResult(), matrixDisplay);
                 }
                 break;
 
@@ -65,9 +57,9 @@ public class MatrixBlockAdapter extends ArrayAdapter<Matrix> {
                 if (convertView == null) {
                     convertView = LayoutInflater.from(context).inflate(R.layout.m_result_block, parent, false);
                 }
-                if (this.matrices.get(2).getMatrix() != null) {
+                if (this.matrices.get(2).getMatrixResult() != null) {
                     TableLayout resultDisplay = (TableLayout)convertView.findViewById(R.id.tableLayoutResult);
-                    fillTable(this.matrices.get(2).getMatrix(), resultDisplay);
+                    fillTable(this.matrices.get(2).getMatrixResult(), resultDisplay);
                 }
 
                 break;

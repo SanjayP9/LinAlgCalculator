@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Sanjay on 6/29/2017.
- * Used to get row and column. after they are entered enter matrix becomes enabled and goes to another
+ * Used to get row and column. after they are entered enter matrixResult becomes enabled and goes to another
  * activity where its entered and a submit button is pressed. That activity recieves the row and column initially
  * then returns a 2d fraction array which is added to the matricies arraylist. Then they are displayed on the
  * textviews for on this activity. When they are displayed its seekbar is disabled. when both matrices
@@ -34,7 +34,7 @@ public class MatrixMainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<Matrix> matrices = null; // Store A, B and Result matrices
 
-    // Create xml for double matrix with operation and do xml for single matrix.
+    // Create xml for double matrixResult with operation and do xml for single matrixResult.
     // change titles to differentiate
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

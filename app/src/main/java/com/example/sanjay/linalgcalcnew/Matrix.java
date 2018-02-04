@@ -6,10 +6,10 @@ package com.example.sanjay.linalgcalcnew;
 
 public class Matrix {
 
-    private String name;
+    protected String name;
     private int rowNum;
     private int colNum;
-    private Fraction[][] matrix;
+    protected Fraction[][] matrixResult;
 
     public Matrix(String name) {
         this.name = name;
@@ -20,7 +20,7 @@ public class Matrix {
 
         setRowNum(row);
         setColNum(col);
-        setMatrix(matrix);
+        setMatrixResult(matrix);
     }
 
     public int getRowNum() {
@@ -58,31 +58,31 @@ public class Matrix {
         }
     }
 
-    public Fraction[][] getMatrix() {
-        return matrix;
+    public Fraction[][] getMatrixResult() {
+        return matrixResult;
     }
 
-    public void setMatrix(Fraction[][] matrix) {
-        this.matrix = matrix;
+    public void setMatrixResult(Fraction[][] matrixResult) {
+        this.matrixResult = matrixResult;
     }
 
     @Override
     public String toString() {
         String result = "";
 
-        for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < matrixResult.length; i++) {
 
-            //result += (i == (matrix.length / 2)) ? (this.name + " = ") : ("\t");
+            //result += (i == (matrixResult.length / 2)) ? (this.name + " = ") : ("\t");
 
-            for (int j = 0; j < matrix[0].length; j++) {
-                result += "\t" + matrix[i][j].toString();
+            for (int j = 0; j < matrixResult[0].length; j++) {
+                result += "\t" + matrixResult[i][j].toString();
             }
             result += "\n";
         }
         return result;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Fraction[][] m1 = new Fraction[][]{
                 {new Fraction(6), new Fraction(8845), new Fraction(4), new Fraction(9)},
                 {new Fraction(3544), new Fraction(6), new Fraction(5540), new Fraction(0)},
@@ -93,5 +93,5 @@ public class Matrix {
 
 
         //Matrix temp = new Matrix()
-    }
+    }*/
 }
