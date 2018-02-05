@@ -9,7 +9,7 @@ public class Result extends Matrix {
     private Fraction constantResult;
 
     public Result(String name) {
-        super(name)
+        super(name);
     }
 
     public Result(String name, int row, int col, Fraction[][] matrix) {
@@ -31,7 +31,7 @@ public class Result extends Matrix {
                 this.constantResult = MatriceCalc.determinant(A.getMatrixResult());
                 break;
             case ScalarMultiply:
-                this.matrixResult = MatriceCalc.scalarMultiply(A.getMatrixResult(), )
+                //this.matrixResult = MatriceCalc.scalarMultiply(A.getMatrixResult(), )
                 break;
             case Inverse:
                 this.matrixResult = MatriceCalc.inverse(A.getMatrixResult());
