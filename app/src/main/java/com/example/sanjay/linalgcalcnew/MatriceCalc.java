@@ -164,4 +164,91 @@ public class MatriceCalc {
             System.out.println();
         }
     }
+
+    // Returns a matrix in row-echelon form using Gaussian Elimination
+    public static Fraction[][] rowEchelon(Fraction[][] m) {
+        // TODO: Make it actually reduced row echelon, this is row echelon
+        Fraction[][] reducedMatrix = new Fraction[m.length][m[0].length];
+
+        for (int row = 0; row < m.length; row++) {
+            for (int col = 0; col < m[row].length; col++) {
+                reducedMatrix[row][col] = new Fraction(m[row][col]);
+            }
+        }
+
+        int lead = 0;
+        for (int r = 0; r < m.length; r++) {
+            if (m[0].length <= lead) { break; }
+            int i = r;
+
+            while (m[i][lead].getDecimal() == 0) {
+                i++;
+                if (i == m.length) {
+                    i = r;
+                    lead++;
+                    if (m[0].length == lead) {
+                        lead--;
+                        break;
+                    }
+                }
+            }
+
+            for (int j = 0; j < m[0].length; j++) {
+                Fraction temp = reducedMatrix[r][j];
+                reducedMatrix[r][j] = reducedMatrix[i][j];
+                reducedMatrix[i][j] = temp;
+            }
+
+            Fraction div = reducedMatrix[r][lead];
+
+            if (div.getDecimal() != 0) {
+                for (int j = 0; j < m[0].length; j++) {
+                    reducedMatrix[r][j] = Fraction.divide(reducedMatrix[r][j], div);
+                }
+            }
+
+            for (int j = 0; j < m.length; j++) {
+                if (j != r) {
+                    Fraction sub = reducedMatrix[j][lead];
+                    for (int k = 0; k < m[0].length; k++) {
+                        reducedMatrix[j][k] = Fraction.subtract(reducedMatrix[j][k],
+                                Fraction.multiply(reducedMatrix[r][k], sub));
+                    }
+                }
+            }
+            lead++;
+        }
+        return reducedMatrix;
+    }
+
+    // Returns a matrix in reduced row-echelon using Gaussian Elimination
+    public static Fraction[][] reducedRowEchelon(Fraction[][] m) {
+        Fraction[][] reducedMatrix;
+
+        reducedMatrix = new Fraction[m.length][m[0].length];
+
+        for (int row = 0; row < m.length; row++) {
+            for (int col = 0; col < m[row].length; col++) {
+                reducedMatrix[row][col] = new Fraction(m[row][col]);
+            }
+        }
+
+        for (int r = 0; r < m.length; r++) {
+            Fraction k = reducedMatrix[r][r];
+            for (int c = 0; c < m[0].length; c++) {
+                reducedMatrix[r][c] = Fraction.divide(reducedMatrix[r][c], k);
+            }
+
+            for (int i = 0; i < m.length; i++) {
+                if (i != r) {
+                    Fraction f = reducedMatrix[i][r];
+                    for (int j = 0; j < m[0].length; j++) {
+                        reducedMatrix[i][j] = Fraction.subtract(reducedMatrix[i][j],
+                                Fraction.multiply(reducedMatrix[r][j], f));
+                    }
+                }
+            }
+        }
+        return reducedMatrix;
+    }
 }
