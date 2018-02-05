@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static java.lang.System.arraycopy;
-
 /**
  * Created by Sanjay on 5/12/2017.
  * MarticieCalc.java contains all matrices calculations
